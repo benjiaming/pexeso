@@ -64,14 +64,18 @@ class Game extends Component {
     }
     async preloadImages(num) {
         const url = 'https://api.thecatapi.com/v1/images/search?size=full';
-        const promises = [...Array(num)].fill().map(i => $.getJSON(url));
-        const results = await Promise.all(promises);
-        const cats = results.map(r => {
-            const image = new Image();
-            image.src = r[0].url;
-            return image;
-        });
-        this.setState({cats}, () => { this.initSquares(this.rowLen) });
+        try {
+            const promises = [...Array(num)].fill().map(i => $.getJSON(url));
+            const results = await Promise.all(promises);
+            const cats = results.map(r => {
+                const image = new Image();
+                image.src = r[0].url;
+                return image;
+            });
+            this.setState({cats}, () => { this.initSquares(this.rowLen) });
+        } catch {
+            this.setState({crashed: true});
+        }
     }
 
     otherSquareId(square, id, squares) {
@@ -168,7 +172,10 @@ class Game extends Component {
                     />
                     <div>Attempts: {this.state.numTries}</div>
                 </div>
-                : <div>Herding cats. Please wait...</div>}
+                : 
+                    this.state.crashed  ? 
+                        <div>Cats are sleeping. Please try again later.</div> :
+                        <div>Herding cats. Please wait...</div>}
             </div>
         );
     }
