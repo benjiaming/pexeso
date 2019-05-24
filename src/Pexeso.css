@@ -2,6 +2,7 @@
 
 .Pexeso {
   margin: 5px;
+  text-align: center;
 }
 
 .header, .footer {
@@ -12,7 +13,6 @@
   font-family: "Roboto";
   font-size: 30px;
   border: 1px solid; 
-  text-align: center;
   margin: 10px;
 }
 .footer {
@@ -31,9 +31,11 @@
    margin-bottom: 15px;
 }
 .game-over {
-  text-align: center;
   font-size: 35px;
   font-family: "Roboto";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 button {
@@ -47,11 +49,12 @@ button {
   font-family: sans-serif;
   font-size: 1rem;
   cursor: pointer;
-  text-align: center;
   transition: background 250ms ease-in-out, 
               transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
+  border-radius: 5px;
+  box-shadow: 5px 6px 8px -2px #0A0909;
 }
 
 button:hover,

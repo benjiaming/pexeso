@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import $ from "jquery";
 import BoxList from './BoxList';
 
-const GameOver = () => {
+const GameOver = ({img}) => {
     return (
         <div className="game-over">
-            <div>Purrrr! Nicely done!  Meow!!!</div>
-            <button onClick={() => window.location.reload() }>Try again?</button>
+            <div>Purrrr! Nicely done!!  Meow!!!</div>
+            <img 
+                className="flip-vertical-right" 
+                src={img} width="300px" 
+                alt="cat" 
+                style={{margin: "20px", borderRadius: "10px", boxShadow: "-10px 10px 10px black"}}
+            />
+            <button onClick={() => window.location.reload() }>Trrrrry again?</button>
         </div>
     )
 }
@@ -68,9 +74,9 @@ class Game extends Component {
         this.setState({cats}, () => { this.initSquares(this.rowLen) });
     }
 
-    otherSquareId(square, id) {
+    otherSquareId(square, id, squares) {
         let otherSquareId;
-        this.state.squares.forEach((s, sid) => {
+        squares.forEach((s, sid) => {
             if (id !== sid && s.image === square.image && s.shown) {
                 otherSquareId = sid;
                 return;
@@ -101,7 +107,7 @@ class Game extends Component {
         });
     }
     checkOtherSquareId(selectedSquare, id, squares) {
-        const otherSquareId = this.otherSquareId(selectedSquare, id);
+        const otherSquareId = this.otherSquareId(selectedSquare, id, squares);
         if (otherSquareId === undefined) {
             this.hideAllSquares();
             return;
@@ -146,7 +152,9 @@ class Game extends Component {
 
     render() {
         if (this.isOver()) {
-            return <GameOver />
+            return <GameOver 
+                img={this.state.squares[this.getRandomPosition(this.state.squares)].image}
+            />
         }
         return (
             <div className="game">
@@ -158,9 +166,9 @@ class Game extends Component {
                         squares={this.state.squares} 
                         onClick={this.onClick}
                     />
-                    <div style={{textAlign: "center"}}>Attempts: {this.state.numTries}</div>
+                    <div>Attempts: {this.state.numTries}</div>
                 </div>
-                : <div style={{textAlign:"center"}}>Herding cats. Please wait...</div>}
+                : <div>Herding cats. Please wait...</div>}
             </div>
         );
     }

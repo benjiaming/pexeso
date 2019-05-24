@@ -8,9 +8,6 @@
     justify-content: center;
     box-shadow: 5px 6px 8px -2px #0A0909;
     border-radius: 10px;
-    /* background: linear-gradient(358deg, #e7f3d2, #60babf);
-    background-size: 400% 400%;     */
-/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#6db3f2+0,54a3ee+50,3690f0+74,1e69de+100;Blue+Gloss+%233 */
     background: rgb(109,179,242); /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  rgba(109,179,242,1) 0%, rgba(84,163,238,1) 50%, rgba(54,144,240,1) 74%, rgba(30,105,222,1) 100%); /* FF3.6-15 */
     background: -webkit-radial-gradient(center, ellipse cover,  rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 74%,rgba(30,105,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
