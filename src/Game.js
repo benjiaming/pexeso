@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from "jquery";
 import BoxList from './BoxList';
 
 const GameOver = ({img}) => {
@@ -38,11 +37,14 @@ class Game extends Component {
     getRandomPosition(arr) {
         return Math.floor(Math.random()*arr.length);
     }
+    isEmpty(obj) {
+        return Object.keys(obj).length === 0;
+    }    
     getNextSquarePosition(squares) {
         let position;
         do {
             position = this.getRandomPosition(squares);
-        } while (!$.isEmptyObject(squares[position]));
+        } while (!this.isEmpty(squares[position]));
         return position;
     }
     newSquare(src) {
@@ -65,7 +67,7 @@ class Game extends Component {
     async preloadImages(num) {
         const url = 'https://api.thecatapi.com/v1/images/search?size=full';
         try {
-            const promises = [...Array(num)].fill().map(i => $.getJSON(url));
+            const promises = [...Array(num)].fill().map(i => fetch(url).then(d => d.json()));
             const results = await Promise.all(promises);
             const cats = results.map(r => {
                 const image = new Image();
