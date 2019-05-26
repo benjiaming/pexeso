@@ -6,4 +6,4 @@ Pexeso is a memory game also known as Pairs or Match Up.  The object of the game
 
 Try your luck here: https://benjiaming.github.io/pexeso/.
 
-![](https://cdn2.thecatapi.com/images/aju.jpg)
+<div align="center"><img src="https://cdn2.thecatapi.com/images/aju.jpg" alt="cat" width="300px"/></div>
