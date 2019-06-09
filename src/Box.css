@@ -8,32 +8,8 @@
   justify-content: center;
   box-shadow: 5px 6px 8px -2px #0a0909;
   border-radius: 10px;
-  background: rgb(109, 179, 242); /* Old browsers */
-  background: -moz-radial-gradient(
-    center,
-    ellipse cover,
-    rgba(109, 179, 242, 1) 0%,
-    rgba(84, 163, 238, 1) 50%,
-    rgba(54, 144, 240, 1) 74%,
-    rgba(30, 105, 222, 1) 100%
-  ); /* FF3.6-15 */
-  background: -webkit-radial-gradient(
-    center,
-    ellipse cover,
-    rgba(109, 179, 242, 1) 0%,
-    rgba(84, 163, 238, 1) 50%,
-    rgba(54, 144, 240, 1) 74%,
-    rgba(30, 105, 222, 1) 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: radial-gradient(
-    ellipse at center,
-    rgba(109, 179, 242, 1) 0%,
-    rgba(84, 163, 238, 1) 50%,
-    rgba(54, 144, 240, 1) 74%,
-    rgba(30, 105, 222, 1) 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+
 .pexeso-box.hidden {
   opacity: 0;
   transition: opacity 0.3s;
@@ -85,4 +61,55 @@
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
+}
+
+.theme-blue {
+  background: rgb(109, 179, 242); /* Old browsers */
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(109, 179, 242, 1) 0%,
+    rgba(84, 163, 238, 1) 50%,
+    rgba(54, 144, 240, 1) 74%,
+    rgba(30, 105, 222, 1) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(109, 179, 242, 1) 0%,
+    rgba(84, 163, 238, 1) 50%,
+    rgba(54, 144, 240, 1) 74%,
+    rgba(30, 105, 222, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(109, 179, 242, 1) 0%,
+    rgba(84, 163, 238, 1) 50%,
+    rgba(54, 144, 240, 1) 74%,
+    rgba(30, 105, 222, 1) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.theme-green {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#b4e391+0,61c419+50,b4e391+100;Green+3D */
+  background: rgb(180, 227, 145); /* Old browsers */
+  background: -moz-linear-gradient(
+    left,
+    rgba(180, 227, 145, 1) 0%,
+    rgba(97, 196, 25, 1) 50%,
+    rgba(180, 227, 145, 1) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    rgba(180, 227, 145, 1) 0%,
+    rgba(97, 196, 25, 1) 50%,
+    rgba(180, 227, 145, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to right,
+    rgba(180, 227, 145, 1) 0%,
+    rgba(97, 196, 25, 1) 50%,
+    rgba(180, 227, 145, 1) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4e391', endColorstr='#b4e391',GradientType=1 ); /* IE6-9 */
 }

@@ -193,6 +193,7 @@ class Game extends Component {
               loaded={this.state.loaded}
               squares={this.state.squares}
               onClick={this.onClick}
+              theme={this.props.deck.theme}
             />
             <div>Attempts: {this.state.numTries}</div>
           </div>
