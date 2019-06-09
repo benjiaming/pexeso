@@ -1,27 +1,49 @@
-import React, { Component } from 'react';
-import Game from './Game';
-import './Pexeso.css';
+import React, { Component } from "react";
 
-const Header = () => {
-  const cat = <span role="img" aria-label="cat">🐱</span>;
-  return (
-    <div className="header">{cat} Pexeso {cat}</div>
+import Game from "./Game";
+import { CatDeck, DogDeck } from "./Deck";
+
+import "./Pexeso.css";
+
+const Header = ({ deck, settings }) => {
+  const icon = (
+    <span role="img" aria-label="icon">
+      {deck.icon}
+    </span>
   );
-}
-const Footer = () => {
   return (
-    <div className="footer">
-       Cats provided by <a href="https://thecatapi.com/">TheCatAPI - Cats as a Service</a>, Everyday is Caturday.
+    <div className="header">
+      <span className="header-icons">
+        {icon} Pexeso {icon}
+      </span>
+      <span>
+        <i className="settings fas fa-cogs" onClick={settings} />
+      </span>
     </div>
   );
-}
+};
+const Footer = ({ deck }) => {
+  return <div className="footer">{deck.footerMsg}</div>;
+};
 class Pexeso extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      deck: CatDeck
+    };
+    this.settings = this.settings.bind(this);
+  }
+  settings() {
+    let newDeck = CatDeck;
+    if (this.state.deck.id === "cat") newDeck = DogDeck;
+    this.setState({ deck: newDeck });
+  }
   render() {
     return (
       <div className="Pexeso">
-        <Header />
-        <Game />
-        <Footer />
+        <Header deck={this.state.deck} settings={this.settings} />
+        <Game deck={this.state.deck} />
+        <Footer deck={this.state.deck} />
       </div>
     );
   }

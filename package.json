@@ -4,11 +4,14 @@
   "private": true,
   "homepage": "https://benjiaming.github.io/pexeso",
   "dependencies": {
+    "@material-ui/core": "^4.0.1",
     "gh-pages": "^2.0.1",
     "jquery": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
     "react-scripts": "3.0.1",
+    "redux": "^4.0.1",
     "yarn": "^1.16.0"
   },
   "scripts": {
