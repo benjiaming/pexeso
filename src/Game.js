@@ -23,7 +23,7 @@ const GameOver = ({ img, deck, onClick }) => {
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.rowLen = 2; //even number
+    this.rowLen = 4; //even number
     this.state = {
       squares: this.createSquares(),
       loaded: false,
