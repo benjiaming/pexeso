@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pexeso/static/css/main.5c80279d.chunk.css",
-    "main.js": "/pexeso/static/js/main.f433794b.chunk.js",
-    "main.js.map": "/pexeso/static/js/main.f433794b.chunk.js.map",
+    "main.css": "/pexeso/static/css/main.646e1cdc.chunk.css",
+    "main.js": "/pexeso/static/js/main.a426575d.chunk.js",
+    "main.js.map": "/pexeso/static/js/main.a426575d.chunk.js.map",
     "runtime~main.js": "/pexeso/static/js/runtime~main.b01fd443.js",
     "runtime~main.js.map": "/pexeso/static/js/runtime~main.b01fd443.js.map",
-    "static/js/2.3e9d0ef0.chunk.js": "/pexeso/static/js/2.3e9d0ef0.chunk.js",
-    "static/js/2.3e9d0ef0.chunk.js.map": "/pexeso/static/js/2.3e9d0ef0.chunk.js.map",
+    "static/js/2.01f6a409.chunk.js": "/pexeso/static/js/2.01f6a409.chunk.js",
+    "static/js/2.01f6a409.chunk.js.map": "/pexeso/static/js/2.01f6a409.chunk.js.map",
     "index.html": "/pexeso/index.html",
-    "precache-manifest.71715fea83aa812671c02189564b5f22.js": "/pexeso/precache-manifest.71715fea83aa812671c02189564b5f22.js",
+    "precache-manifest.d2380c7a3a938fbfea83d0b0fc548e8f.js": "/pexeso/precache-manifest.d2380c7a3a938fbfea83d0b0fc548e8f.js",
     "service-worker.js": "/pexeso/service-worker.js",
-    "static/css/main.5c80279d.chunk.css.map": "/pexeso/static/css/main.5c80279d.chunk.css.map"
+    "static/css/main.646e1cdc.chunk.css.map": "/pexeso/static/css/main.646e1cdc.chunk.css.map"
   }
 }
