@@ -76,11 +76,14 @@ class Game extends Component {
       this.setState({ squares, loaded: true });
     });
   }
-  async preloadImages(num, deck) {
+  preloadImages(num, deck) {
     try {
-      const images = await deck.preloadImages(num);
-      this.setState({ images }, () => {
-        this.initSquares(this.rowLen);
+      this.setState({ loaded: false }, async () => {
+        const images = await deck.preloadImages(num);
+        this.setState({ images }, () => {
+          this.initSquares(this.rowLen);
+          this.setState({ loaded: true });
+        });
       });
     } catch (err) {
       console.log(err);
