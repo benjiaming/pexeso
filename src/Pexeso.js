@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Game from "./Game";
-import { CatDeck, DogDeck } from "./Deck";
+import { CatDeck, DogDeck, ChineseDeck } from "./Deck";
 
 import "./Pexeso.css";
 
@@ -29,13 +29,14 @@ class Pexeso extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deck: CatDeck
+      deck: ChineseDeck
     };
     this.settings = this.settings.bind(this);
   }
   settings() {
     let newDeck = CatDeck;
     if (this.state.deck.id === "cat") newDeck = DogDeck;
+    if (this.state.deck.id === "dog") newDeck = ChineseDeck;
     this.setState({ deck: newDeck });
   }
   render() {
@@ -44,6 +45,7 @@ class Pexeso extends Component {
         <Header deck={this.state.deck} settings={this.settings} />
         <Game deck={this.state.deck} />
         <Footer deck={this.state.deck} />
+        <canvas id="canvas" width="150px" height="150px" />
       </div>
     );
   }

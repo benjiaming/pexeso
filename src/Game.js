@@ -6,7 +6,7 @@ const GameOver = ({ img, deck, onClick }) => {
     <div className="game-over">
       <div />
       <img
-        className="flip-vertical-right"
+        className="slide-fwd-center"
         src={img}
         width="300px"
         alt="box"
@@ -43,17 +43,11 @@ class Game extends Component {
     this.loadGame();
   }
   loadGame() {
-    this.preloadImages(this.rowLen ** 2 / 2, this.props.deck);
+    this.generateCards(this.rowLen ** 2 / 2, this.props.deck);
     this.setState({ numTries: 0 });
   }
   createSquares() {
     return [...Array(this.rowLen ** 2)].fill({});
-  }
-  shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
   }
   getRandomPosition(arr) {
     return Math.floor(Math.random() * arr.length);
@@ -67,19 +61,16 @@ class Game extends Component {
   }
   initSquares(num) {
     const squares = [...this.state.squares];
-    const images = [...this.state.images, ...this.state.images];
-    this.shuffle(images);
-    this.setState({ images }, () => {
-      for (let i = 0; i < squares.length; i++) {
-        squares[i] = this.newSquare(images.pop().src);
-      }
-      this.setState({ squares, loaded: true });
-    });
+    const images = [...this.state.images];
+    for (let i = 0; i < squares.length; i++) {
+      squares[i] = this.newSquare(images.pop().src);
+    }
+    this.setState({ squares, loaded: true });
   }
-  preloadImages(num, deck) {
+  generateCards(num, deck) {
     try {
       this.setState({ loaded: false }, async () => {
-        const images = await deck.preloadImages(num);
+        const images = await deck.generateCards(num);
         this.setState({ images }, () => {
           this.initSquares(this.rowLen);
           this.setState({ loaded: true });

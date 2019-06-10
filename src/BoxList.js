@@ -15,7 +15,7 @@ class Box extends Component {
       maxWidth: "100%",
       maxHeight: "100%"
     };
-    const cat = <img src={square.image} style={imgStyle} alt="cat" />;
+    const image = <img src={square.image} style={imgStyle} alt="question" />;
     let pexesoClass = "pexeso-box " + theme;
     if (square.guessed) {
       pexesoClass += " flip-vertical-right hidden";
@@ -23,7 +23,7 @@ class Box extends Component {
     return (
       <div className={pexesoClass} onClick={this.handleClick}>
         {loaded && square.shown ? (
-          cat
+          image
         ) : (
           <i className="far fa-question-circle question" />
         )}
