@@ -1,5 +1,5 @@
 import React from "react";
-import { HSK1 } from "./decks/Chinese";
+import { HSK } from "./decks/Chinese";
 
 export function shuffle(cards) {
   for (let i = cards.length - 1; i > 0; i--) {
@@ -83,17 +83,17 @@ export const ChineseDeck = {
 };
 ChineseDeck.generateCards = function(num) {
   let images = [];
-  shuffle(HSK1);
+  shuffle(HSK);
   for (let i = 0; i < num; i++) {
     const image = new Image();
     image.src = createCanvas({
-      text: HSK1[i][0],
-      pinyin: `[${HSK1[i][2]}]`,
+      text: HSK[i][0],
+      pinyin: HSK[i][2],
       font: '40px sans-serif',
       width: "150",
       height: "150"
     });
-    image.alt = HSK1[i][0]
+    image.alt = `${HSK[i][0]}: ${HSK[i][3]}`
     images.push(image);
   }
   images = double(images);

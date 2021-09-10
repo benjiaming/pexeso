@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BoxList from "./BoxList";
 
-const GameOver = ({ img, deck, onClick }) => {
+const GameOver = ({ img, deck, onClick, score }) => {
   return (
     <div className="game-over">
       <div />
@@ -16,6 +16,7 @@ const GameOver = ({ img, deck, onClick }) => {
           boxShadow: "-10px 10px 10px black"
         }}
       />
+      <div>Score: {score}</div>
       <button onClick={onClick}>{deck.tryAgainMsg}</button>
     </div>
   );
@@ -30,7 +31,9 @@ class Game extends Component {
       loaded: false,
       images: [],
       paused: false,
-      numTries: 0
+      numTries: 0,
+      score: 0,
+      previousPhrase: '',
     };
     this.onClick = this.onClick.bind(this);
     this.loadGame = this.loadGame.bind(this);
@@ -123,8 +126,14 @@ class Game extends Component {
     const otherSquareId = this.otherSquareId(selectedSquare, id, squares);
     if (otherSquareId === undefined) {
       this.hideAllSquares();
+      this.setState((state) => {
+        return {score: Math.max(state.score - 1, 0)}
+      })
       return;
     }
+    this.setState((state) => {
+      return {score: state.score + 10}
+    })
     this.disableSelectedSquares(selectedSquare, squares, otherSquareId);
   }
   disableSelectedSquares(selectedSquare, squares, otherSquareId) {
@@ -150,12 +159,17 @@ class Game extends Component {
     }
     const squares = [...this.state.squares];
     const selectedSquare = { ...squares[id] };
+    console.log(selectedSquare.alt)
     selectedSquare.shown = !selectedSquare.shown;
     squares[id] = selectedSquare;
     if (selectedSquare.alt && this.synth) {
-      const utterThis = new SpeechSynthesisUtterance(selectedSquare.alt)
-      utterThis.lang = 'zh-CN'
-      this.synth.speak(utterThis)
+      const chineseOnly = selectedSquare.alt.split(':')[0]
+      if (this.state.previousPhrase !== chineseOnly) {
+        const utterThis = new SpeechSynthesisUtterance(chineseOnly)
+        utterThis.lang = 'zh-CN'
+        this.synth.speak(utterThis)
+        this.setState({previousPhrase: chineseOnly})
+      }
     }
     this.setState({ squares }, () => {
       if (this.isGuessingSecond(squares)) {
@@ -180,6 +194,7 @@ class Game extends Component {
           }
           deck={this.props.deck}
           onClick={this.loadGame}
+          score={this.state.score}
         />
       );
     }
@@ -195,6 +210,7 @@ class Game extends Component {
               theme={this.props.deck.theme}
             />
             <div>Attempts: {this.state.numTries}</div>
+            <div>Score: {this.state.score}</div>
           </div>
         ) : this.state.crashed ? (
           <div>{this.props.deck.crashedMsg}</div>
