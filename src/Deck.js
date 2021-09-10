@@ -89,11 +89,11 @@ ChineseDeck.generateCards = function(num) {
     image.src = createCanvas({
       text: HSK1[i][0],
       pinyin: `[${HSK1[i][2]}]`,
-      font:
-        "40px KaiTi, SimSun, 'Microsoft YaHei', 'Arial Unicode MS', 'Arial Unicode', serif",
+      font: '40px sans-serif',
       width: "150",
       height: "150"
     });
+    image.alt = HSK1[i][0]
     images.push(image);
   }
   images = double(images);

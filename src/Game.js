@@ -23,7 +23,8 @@ const GameOver = ({ img, deck, onClick }) => {
 class Game extends Component {
   constructor(props) {
     super(props);
-    this.rowLen = 4; //even number
+    this.rowLen = 4 //even number
+    this.synth = window.speechSynthesis
     this.state = {
       squares: this.createSquares(),
       loaded: false,
@@ -52,18 +53,20 @@ class Game extends Component {
   getRandomPosition(arr) {
     return Math.floor(Math.random() * arr.length);
   }
-  newSquare(src) {
+  newSquare(src, text) {
     return {
       image: src,
       shown: false,
-      guessed: false
+      guessed: false,
+      alt: text
     };
   }
   initSquares(num) {
     const squares = [...this.state.squares];
     const images = [...this.state.images];
     for (let i = 0; i < squares.length; i++) {
-      squares[i] = this.newSquare(images.pop().src);
+      const image = images.pop()
+      squares[i] = this.newSquare(image.src, image.alt);
     }
     this.setState({ squares, loaded: true });
   }
@@ -149,6 +152,11 @@ class Game extends Component {
     const selectedSquare = { ...squares[id] };
     selectedSquare.shown = !selectedSquare.shown;
     squares[id] = selectedSquare;
+    if (selectedSquare.alt && this.synth) {
+      const utterThis = new SpeechSynthesisUtterance(selectedSquare.alt)
+      utterThis.lang = 'zh-CN'
+      this.synth.speak(utterThis)
+    }
     this.setState({ squares }, () => {
       if (this.isGuessingSecond(squares)) {
         this.setState(
