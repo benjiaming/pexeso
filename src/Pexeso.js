@@ -32,6 +32,7 @@ class Pexeso extends Component {
       deck: ChineseDeck
     };
     this.settings = this.settings.bind(this);
+    this.changeFooter = this.changeFooter.bind(this)
   }
   settings() {
     let newDeck = CatDeck;
@@ -39,11 +40,16 @@ class Pexeso extends Component {
     if (this.state.deck.id === "dog") newDeck = ChineseDeck;
     this.setState({ deck: newDeck });
   }
+  changeFooter(newMessage) {
+    const newDeck = this.state.deck
+    newDeck.footerMsg = newMessage
+    this.setState({ deck: newDeck})
+  }
   render() {
     return (
       <div className="Pexeso">
         <Header deck={this.state.deck} settings={this.settings} />
-        <Game deck={this.state.deck} />
+        <Game deck={this.state.deck} changeFooter={this.changeFooter} />
         <Footer deck={this.state.deck} />
         <canvas id="canvas" width="150px" height="150px" />
       </div>

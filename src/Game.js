@@ -38,6 +38,7 @@ class Game extends Component {
       numTries: 0,
       score: 0,
       previousPhrase: "",
+      originalFooter: this.props.deck.footerMsg
     }
     this.onClick = this.onClick.bind(this)
     this.loadGame = this.loadGame.bind(this)
@@ -53,6 +54,8 @@ class Game extends Component {
   loadGame() {
     this.generateCards(this.rowLen ** 2 / 2, this.props.deck)
     this.setState({ numTries: 0 })
+    this.props.changeFooter(this.state.originalFooter)
+
   }
   createSquares() {
     return [...Array(this.rowLen ** 2)].fill({})
@@ -165,6 +168,11 @@ class Game extends Component {
     const selectedSquare = { ...squares[id] }
     if (selectedSquare.alt) {
       console.log(selectedSquare.alt)
+      this.props.changeFooter(selectedSquare.alt)
+      clearInterval(this.interval)
+      this.interval = setTimeout(() => {
+        this.props.changeFooter('')
+      }, 1000)
     }
     selectedSquare.shown = !selectedSquare.shown
     squares[id] = selectedSquare
