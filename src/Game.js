@@ -83,7 +83,7 @@ class Game extends Component {
   generateCards(num, deck) {
     try {
       this.setState({ loaded: false }, async () => {
-        const images = await deck.generateCards(num)
+        const images = await deck.generateCards(num, deck)
         this.setState({ images }, () => {
           this.initSquares(this.rowLen)
           this.setState({ loaded: true })
@@ -126,7 +126,7 @@ class Game extends Component {
     this.setState({ paused: true }, () => {
       setTimeout(() => {
         this.setState({ paused: false, squares })
-      }, 1000)
+      }, 5000)
     })
   }
   checkOtherSquareId(selectedSquare, id, squares) {
@@ -151,7 +151,7 @@ class Game extends Component {
         otherSquare.guessed = true
         squares[otherSquareId] = otherSquare
         this.setState({ paused: false, squares })
-      }, 500)
+      }, 5000)
     })
   }
   isOver() {
@@ -177,13 +177,17 @@ class Game extends Component {
     selectedSquare.shown = !selectedSquare.shown
     squares[id] = selectedSquare
     if (selectedSquare.alt && this.synth) {
-      const chineseOnly = selectedSquare.alt.split(":")[0]
-      if (this.state.previousPhrase !== chineseOnly) {
-        const utterThis = new SpeechSynthesisUtterance(chineseOnly)
-        utterThis.lang = "zh-CN"
-        this.synth.speak(utterThis)
-        this.setState({ previousPhrase: chineseOnly })
-      }
+      const pronunciation = selectedSquare.alt.split(":")[0]
+        const utterThis = new SpeechSynthesisUtterance(pronunciation)
+        const langTable = {
+          "chinese": "zh-CN",
+          "hiragana": "ja-JP",
+        }
+        utterThis.lang = langTable[this.props.deck.id]
+        if (utterThis.lang && this.state.previousPhrase !== pronunciation) {
+          this.synth.speak(utterThis)
+        }
+        this.setState({ previousPhrase: pronunciation })
     }
     this.setState({ squares }, () => {
       if (this.isGuessingSecond(squares)) {

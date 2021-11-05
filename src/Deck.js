@@ -1,5 +1,6 @@
 import React from "react";
 import { HSK } from "./decks/Chinese";
+import { Hiragana } from "./decks/Hiragana"
 
 export function shuffle(cards) {
   for (let i = cards.length - 1; i > 0; i--) {
@@ -71,6 +72,26 @@ export const DogDeck = {
 };
 DogDeck.generateCards = Deck.generateCards;
 
+const generateLanguageCards = function (num, data, pronunciationPos, explanationPos) {
+  let images = []
+  shuffle(data)
+  for (let i = 0; i < num; i++) {
+    const image = new Image()
+    image.src = createCanvas({
+      text: data[i][0],
+      pinyin: data[i][pronunciationPos],
+      font: "40px sans-serif",
+      width: "150",
+      height: "150",
+    })
+    image.alt = `${data[i][0]}: ${data[i][explanationPos]}`
+    images.push(image)
+  }
+  images = double(images)
+  shuffle(images)
+  return images
+}
+
 export const ChineseDeck = {
   id: "chinese",
   icon: "汉子",
@@ -81,25 +102,25 @@ export const ChineseDeck = {
   tryAgainMsg: "Try again?",
   theme: "theme-chinese"
 };
-ChineseDeck.generateCards = function(num) {
-  let images = [];
-  shuffle(HSK);
-  for (let i = 0; i < num; i++) {
-    const image = new Image();
-    image.src = createCanvas({
-      text: HSK[i][0],
-      pinyin: HSK[i][2],
-      font: '40px sans-serif',
-      width: "150",
-      height: "150"
-    });
-    image.alt = `${HSK[i][0]}: ${HSK[i][3]}`
-    images.push(image);
-  }
-  images = double(images);
-  shuffle(images);
-  return images;
+ChineseDeck.generateCards = function (num) {
+  return generateLanguageCards(num, HSK, 2, 3)
 };
+
+export const HiraganaDeck = {
+  id: "hiragana",
+  icon: "ひらがな",
+  gameOverMsg: "終わり",
+  loadingMsg: "ちょっと待てくださ...",
+  crashedMsg: "だめ",
+  footerMsg: "井の中の蛙大海を知らず ",
+  tryAgainMsg: "Try again?",
+  theme: "theme-hiragana",
+}
+
+HiraganaDeck.generateCards = function (num) {
+  return generateLanguageCards(num, Hiragana, 1, 1)
+}
+
 
 function createCanvas(input) {
   let canvas = document.createElement("canvas");
