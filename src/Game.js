@@ -126,7 +126,7 @@ class Game extends Component {
     this.setState({ paused: true }, () => {
       setTimeout(() => {
         this.setState({ paused: false, squares })
-      }, 5000)
+      }, 1000)
     })
   }
   checkOtherSquareId(selectedSquare, id, squares) {
@@ -151,7 +151,7 @@ class Game extends Component {
         otherSquare.guessed = true
         squares[otherSquareId] = otherSquare
         this.setState({ paused: false, squares })
-      }, 5000)
+      }, 500)
     })
   }
   isOver() {
@@ -172,7 +172,7 @@ class Game extends Component {
       clearInterval(this.interval)
       this.interval = setTimeout(() => {
         this.props.changeFooter('')
-      }, 1000)
+      }, 500)
     }
     selectedSquare.shown = !selectedSquare.shown
     squares[id] = selectedSquare
