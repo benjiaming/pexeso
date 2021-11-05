@@ -38,7 +38,7 @@ class Game extends Component {
       numTries: 0,
       score: 0,
       previousPhrase: "",
-      originalFooter: this.props.deck.footerMsg
+      originalFooter: props && this.props.deck.footerMsg
     }
     this.onClick = this.onClick.bind(this)
     this.loadGame = this.loadGame.bind(this)
