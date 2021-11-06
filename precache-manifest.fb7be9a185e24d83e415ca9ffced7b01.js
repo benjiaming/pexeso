@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "51ea3743d96cd0b6d4754ec45a3e0864",
+    "revision": "c899febae67eee15d41ea170b1f8cc30",
     "url": "/pexeso/index.html"
   },
   {
-    "revision": "c0446b69e05ed86bafc2",
+    "revision": "1fb5c89dd9e0008a66c5",
     "url": "/pexeso/static/css/main.77058ad3.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pexeso/static/js/2.01f6a409.chunk.js"
   },
   {
-    "revision": "c0446b69e05ed86bafc2",
-    "url": "/pexeso/static/js/main.1919b327.chunk.js"
+    "revision": "1fb5c89dd9e0008a66c5",
+    "url": "/pexeso/static/js/main.b71aec24.chunk.js"
   },
   {
     "revision": "f318c94c3aac7bbd9dc5",

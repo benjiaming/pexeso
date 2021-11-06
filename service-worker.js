@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/pexeso/precache-manifest.bf63ff2967e94ebb3a71d4ac819649f8.js"
+  "/pexeso/precache-manifest.fb7be9a185e24d83e415ca9ffced7b01.js"
 );
 
 self.addEventListener('message', (event) => {

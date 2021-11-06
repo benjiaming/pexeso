@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/pexeso/static/css/main.77058ad3.chunk.css",
-    "main.js": "/pexeso/static/js/main.1919b327.chunk.js",
-    "main.js.map": "/pexeso/static/js/main.1919b327.chunk.js.map",
+    "main.js": "/pexeso/static/js/main.b71aec24.chunk.js",
+    "main.js.map": "/pexeso/static/js/main.b71aec24.chunk.js.map",
     "runtime~main.js": "/pexeso/static/js/runtime~main.b01fd443.js",
     "runtime~main.js.map": "/pexeso/static/js/runtime~main.b01fd443.js.map",
     "static/js/2.01f6a409.chunk.js": "/pexeso/static/js/2.01f6a409.chunk.js",
     "static/js/2.01f6a409.chunk.js.map": "/pexeso/static/js/2.01f6a409.chunk.js.map",
     "index.html": "/pexeso/index.html",
-    "precache-manifest.bf63ff2967e94ebb3a71d4ac819649f8.js": "/pexeso/precache-manifest.bf63ff2967e94ebb3a71d4ac819649f8.js",
+    "precache-manifest.fb7be9a185e24d83e415ca9ffced7b01.js": "/pexeso/precache-manifest.fb7be9a185e24d83e415ca9ffced7b01.js",
     "service-worker.js": "/pexeso/service-worker.js",
     "static/css/main.77058ad3.chunk.css.map": "/pexeso/static/css/main.77058ad3.chunk.css.map"
   }
