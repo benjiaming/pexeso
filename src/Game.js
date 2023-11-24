@@ -172,7 +172,7 @@ class Game extends Component {
       clearInterval(this.interval)
       this.interval = setTimeout(() => {
         this.props.changeFooter('')
-      }, 500)
+      }, 1500)
     }
     selectedSquare.shown = !selectedSquare.shown
     squares[id] = selectedSquare
