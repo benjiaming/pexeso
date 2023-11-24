@@ -94,7 +94,7 @@ const generateLanguageCards = function (num, data, pronunciationPos, explanation
 
 export const ChineseDeck = {
   id: "chinese",
-  icon: "汉子",
+  icon: "汉字",
   gameOverMsg: "游戏结束",
   loadingMsg: "请等一下...",
   crashedMsg: "不好意思， 我没办法.",
